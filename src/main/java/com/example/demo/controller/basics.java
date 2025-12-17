@@ -5,5 +5,6 @@ public class basics {
     @GetMapping("/home")
     public String sample(){
         return "hello world";
+       
     } 
 }
