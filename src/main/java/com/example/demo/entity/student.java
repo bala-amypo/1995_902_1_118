@@ -1,6 +1,8 @@
 package com.example.project.entity;
 import java.time.LocalDate;
 public class  student{
+    @Id
+    
     private int id;
     private String name;
     private String email;
@@ -23,10 +25,4 @@ public String getEmail(){
 }
 public void setEmail(String email){
     this.email=email;
-}
-public LocalDate getDob(){
-    return dob;
-}
-public void setDob(LocalDate dob){
-    return dob;
 }
