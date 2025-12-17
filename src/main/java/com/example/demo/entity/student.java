@@ -3,8 +3,8 @@ import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-
-import jakarta.per
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 public class  student{
     @Id
@@ -15,7 +15,7 @@ public class  student{
     public int getId(){
         return id;
         }
-        public void setId(int id){
+        public void setId(Integer id){
             this.id=id;
         }
         public String getName(){
@@ -29,4 +29,6 @@ public class  student{
         }
         public void setEmail(String email){
             this.email=email;
-}
+        }
+        public student(Integer id)
+
