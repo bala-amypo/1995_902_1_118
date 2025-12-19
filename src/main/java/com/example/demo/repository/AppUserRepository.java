@@ -1,1 +1,4 @@
-pacakage com.example.demo.repository
+pacakage com.example.demo.repository;
+public interface AppUserRepository{
+    
+}
