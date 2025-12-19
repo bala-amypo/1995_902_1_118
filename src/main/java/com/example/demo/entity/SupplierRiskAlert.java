@@ -1,2 +1,4 @@
 package com.example.entity;
-public class
+public class SupplierRiskAlert{
+    
+}
