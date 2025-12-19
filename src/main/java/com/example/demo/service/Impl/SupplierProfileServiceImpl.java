@@ -1,2 +1,4 @@
 package com.example.demo.service.Impl;
-public class SupplierProfileSE
+public class SupplierProfileServiceImpl implements SupplierProfileService{
+    
+}
