@@ -1,4 +1,16 @@
-package com.example.demo.entity;
-public class AppUser{
-    
+package com.example.demo.model;
+
+import jakarta.persistence.*;
+
+@Entity
+public class AppUser {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String email;
+    private String password;
+
+    // getters & setters
 }
