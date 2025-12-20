@@ -9,10 +9,19 @@ public class DelayScoreRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long supplierId;
     private Long poId;
-    private Integer delayDays;
+    private int delayDays;
     private String delaySeverity;
 
-    // getters & setters
+    public void setPoId(Long poId) {
+        this.poId = poId;
+    }
+
+    public void setDelayDays(int delayDays) {
+        this.delayDays = delayDays;
+    }
+
+    public void setDelaySeverity(String delaySeverity) {
+        this.delaySeverity = delaySeverity;
+    }
 }
