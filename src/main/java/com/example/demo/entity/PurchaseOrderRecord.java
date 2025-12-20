@@ -10,9 +10,23 @@ public class PurchaseOrderRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String poNumber;
     private Long supplierId;
     private LocalDate promisedDeliveryDate;
 
-    // getters & setters
+    // ✅ REQUIRED
+    public Long getSupplierId() {
+        return supplierId;
+    }
+
+    public LocalDate getPromisedDeliveryDate() {
+        return promisedDeliveryDate;
+    }
+
+    public void setSupplierId(Long supplierId) {
+        this.supplierId = supplierId;
+    }
+
+    public void setPromisedDeliveryDate(LocalDate promisedDeliveryDate) {
+        this.promisedDeliveryDate = promisedDeliveryDate;
+    }
 }
