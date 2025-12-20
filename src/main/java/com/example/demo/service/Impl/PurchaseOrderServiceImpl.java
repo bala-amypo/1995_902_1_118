@@ -1,4 +1,13 @@
 package com.example.demo.service.Impl;
-public class PurchaseOrderServiceImpl implements PurchaseOrderService{
-    
+
+import org.springframework.stereotype.Service;
+import com.example.demo.service.PurchaseOrderService;
+
+@Service
+public class PurchaseOrderServiceImpl implements PurchaseOrderService {
+
+    @Override
+    public String createPurchaseOrder() {
+        return "Purchase order created";
+    }
 }

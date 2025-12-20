@@ -1,4 +1,13 @@
 package com.example.demo.service.Impl;
-public class SupplierProfileServiceImpl implements SupplierProfileService{
-    
+
+import org.springframework.stereotype.Service;
+import com.example.demo.service.SupplierProfileService;
+
+@Service
+public class SupplierProfileServiceImpl implements SupplierProfileService {
+
+    @Override
+    public String getSupplierProfile() {
+        return "Supplier profile details";
+    }
 }
