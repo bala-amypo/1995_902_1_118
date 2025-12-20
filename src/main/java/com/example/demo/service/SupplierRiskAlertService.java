@@ -1,4 +1,5 @@
 package com.example.demo.service;
-public class SupplierRiskAlertService{
-    
+
+public interface SupplierRiskAlertService {
+    String getAlert();
 }
