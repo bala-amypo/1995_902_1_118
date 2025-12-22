@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/deliveries")
+@RequestMapping("/
+api/deliveries")
 public class DeliveryRecordController {
 
     private final DeliveryRecordRepository repo;
