@@ -1,21 +1,18 @@
 package com.example.demo.controller;
 
-import com.example.demo.entity.DelayScoreRecord;
 import com.example.demo.service.DelayScoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/delay-scores")
+@RequestMapping("/delay-score")
 public class DelayScoreController {
 
-    private final DelayScoreService service;
+    @Autowired
+    private DelayScoreService delayScoreService;
 
-    public DelayScoreController(DelayScoreService service) {
-        this.service = service;
-    }
-
-    @PostMapping("/compute/{poId}")
-    public DelayScoreRecord compute(@PathVariable Long poId) {
-        return service.compute(poId);
+    @GetMapping("/{poId}")
+    public int calculateDelayScore(@PathVariable Long poId) {
+        return delayScoreService.compute(poId);
     }
 }
