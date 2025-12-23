@@ -13,7 +13,7 @@ public class DelayScoreServiceImpl implements DelayScoreService {
     private DeliveryRecordRepository deliveryRepo;
 
     @Override
-    public int calculateDelayScore(Long poId) {
+    public int compute(Long poId) {
 
         DeliveryRecord record = deliveryRepo.findByPoId(poId);
 
@@ -21,7 +21,7 @@ public class DelayScoreServiceImpl implements DelayScoreService {
             return 0;
         }
 
-        // sample logic
+        // Sample delay score logic
         return 10;
     }
 }
