@@ -1,42 +1,27 @@
-package com.example.demo.service;
+package com.example.demo.service.Impl;
 
-import com.example.demo.entity.*;
-import com.example.demo.repository.*;
+import com.example.demo.entity.DeliveryRecord;
+import com.example.demo.repository.DeliveryRecordRepository;
+import com.example.demo.service.DelayScoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.temporal.ChronoUnit;
 
 @Service
 public class DelayScoreServiceImpl implements DelayScoreService {
 
-    private final PurchaseOrderRecordRepository poRepo;
-    private final DeliveryRecordRepository deliveryRepo;
-    private final DelayScoreRecordRepository delayRepo;
-
-    public DelayScoreServiceImpl(PurchaseOrderRecordRepository poRepo,
-                                 DeliveryRecordRepository deliveryRepo,
-                                 DelayScoreRecordRepository delayRepo) {
-        this.poRepo = poRepo;
-        this.deliveryRepo = deliveryRepo;
-        this.delayRepo = delayRepo;
-    }
+    @Autowired
+    private DeliveryRecordRepository deliveryRepo;
 
     @Override
-    public DelayScoreRecord compute(Long poId) {
+    public int calculateDelayScore(Long poId) {
 
-        PurchaseOrderRecord po = poRepo.findById(poId).orElseThrow();
-        DeliveryRecord d = deliveryRepo.findByPoId(poId).get(0);
+        DeliveryRecord record = deliveryRepo.findByPoId(poId);
 
-        long days = ChronoUnit.DAYS.between(
-                po.getPromisedDeliveryDate(),
-                d.getActualDeliveryDate());
+        if (record == null) {
+            return 0;
+        }
 
-        DelayScoreRecord r = new DelayScoreRecord();
-        r.setPoId(poId);
-        r.setSupplierId(po.getSupplierId());
-        r.setDelayDays((int) days);
-        r.setDelaySeverity(days <= 0 ? "ON_TIME" : "DELAYED");
-
-        return delayRepo.save(r);
+        // sample logic
+        return 10;
     }
 }

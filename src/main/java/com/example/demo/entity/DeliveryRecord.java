@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 
 @Entity
@@ -11,30 +14,24 @@ public class DeliveryRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "po_id", nullable = false)
+    @NotNull
     private Long poId;
 
-    @Column(nullable = false)
+    @NotBlank
     private String itemName;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer quantity;
 
-    @Column(name = "actual_delivery_date")
     private LocalDate actualDeliveryDate;
 
-    public DeliveryRecord() {
-    }
-
-    public DeliveryRecord(Long poId, String itemName, Integer quantity, LocalDate actualDeliveryDate) {
-        this.poId = poId;
-        this.itemName = itemName;
-        this.quantity = quantity;
-        this.actualDeliveryDate = actualDeliveryDate;
-    }
-
+    // getters and setters
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getPoId() {
