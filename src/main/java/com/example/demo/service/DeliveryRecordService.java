@@ -1,5 +1,13 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.DeliveryRecord;
+import java.util.List;
+
 public interface DeliveryRecordService {
-    String getStatus();
+
+    DeliveryRecord save(DeliveryRecord record);
+
+    List<DeliveryRecord> getAll();
+
+    DeliveryRecord getById(Long id);
 }
