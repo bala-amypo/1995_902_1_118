@@ -1,29 +1,31 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.DeliveryRecord;
-import com.example.demo.repository.DeliveryRecordRepository;
+import com.example.demo.service.DeliveryRecordService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/
-api/deliveries")
+@RequestMapping("/delivery-records")
 public class DeliveryRecordController {
 
-    private final DeliveryRecordRepository repo;
-
-    public DeliveryRecordController(DeliveryRecordRepository repo) {
-        this.repo = repo;
-    }
+    @Autowired
+    private DeliveryRecordService deliveryRecordService;
 
     @PostMapping
-    public DeliveryRecord create(@RequestBody DeliveryRecord d) {
-        return repo.save(d);
+    public DeliveryRecord saveDeliveryRecord(@RequestBody DeliveryRecord record) {
+        return deliveryRecordService.save(record);
     }
 
     @GetMapping
-    public List<DeliveryRecord> all() {
-        return repo.findAll();
+    public List<DeliveryRecord> getAllDeliveryRecords() {
+        return deliveryRecordService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public DeliveryRecord getById(@PathVariable Long id) {
+        return deliveryRecordService.getById(id);
     }
 }
