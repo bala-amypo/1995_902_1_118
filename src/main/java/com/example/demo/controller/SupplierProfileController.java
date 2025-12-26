@@ -1,14 +1,15 @@
-// SupplierProfileServiceImpl.java
-package com.example.demo.service.Impl;
+@RestController
+@RequestMapping("/supplier-profile")
+public class SupplierProfileController {
 
-import com.example.demo.service.SupplierProfileService;
-import org.springframework.stereotype.Service;
+    private final SupplierProfileService supplierProfileService;
 
-@Service
-public class SupplierProfileServiceImpl implements SupplierProfileService {
+    public SupplierProfileController(SupplierProfileService supplierProfileService) {
+        this.supplierProfileService = supplierProfileService;
+    }
 
-    @Override
-    public String getSupplierProfile() {
-        return "Supplier profile details"; // Dummy
+    @GetMapping
+    public String getProfile() {
+        return supplierProfileService.getSupplierProfile();
     }
 }
