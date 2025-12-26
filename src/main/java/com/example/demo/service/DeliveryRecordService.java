@@ -1,13 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.entity.DeliveryRecord;
+import com.example.demo.model.DeliveryRecord;
 import java.util.List;
 
 public interface DeliveryRecordService {
-
-    DeliveryRecord save(DeliveryRecord record);
-
-    List<DeliveryRecord> getAll();
-
-    DeliveryRecord getById(Long id);
+    DeliveryRecord recordDelivery(DeliveryRecord delivery);
+    List<DeliveryRecord> getDeliveriesByPO(Long poId);
+    List<DeliveryRecord> getAllDeliveries();
 }
