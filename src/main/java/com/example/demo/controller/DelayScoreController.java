@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.service.DelayScoreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,7 +13,13 @@ public class DelayScoreController {
     private DelayScoreService delayScoreService;
 
     @GetMapping("/{poId}")
-    public int calculateDelayScore(@PathVariable Long poId) {
-        return delayScoreService.compute(poId);
+    public ResponseEntity<Integer> calculateDelayScore(@PathVariable Long poId) {
+
+        if (poId == null || poId <= 0) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        int score = delayScoreService.compute(poId);
+        return ResponseEntity.ok(score);
     }
 }
