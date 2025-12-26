@@ -1,6 +1,8 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
 
 @Entity
 @Table(name = "delay_score_record")
@@ -10,12 +12,20 @@ public class DelayScoreRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @Column(nullable = false)
     private Long poId;
 
+    @NotNull
+    @Column(nullable = false)
     private Long supplierId;
 
+    @PositiveOrZero
+    @Column(nullable = false)
     private int delayDays;
 
+    @NotNull
+    @Column(nullable = false)
     private String delaySeverity;
 
     // -------- GETTERS & SETTERS --------
