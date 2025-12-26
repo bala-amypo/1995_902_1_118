@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 
@@ -15,17 +16,23 @@ public class DeliveryRecord {
     private Long id;
 
     @NotNull
+    @Column(nullable = false)
     private Long poId;
 
     @NotBlank
+    @Column(nullable = false)
     private String itemName;
 
     @NotNull
+    @Positive
+    @Column(nullable = false)
     private Integer quantity;
 
+    @Column
     private LocalDate actualDeliveryDate;
 
-    // getters and setters
+    // ---------- GETTERS & SETTERS ----------
+
     public Long getId() {
         return id;
     }
