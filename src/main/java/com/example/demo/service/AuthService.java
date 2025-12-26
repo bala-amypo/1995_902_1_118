@@ -1,15 +1,5 @@
-// AuthServiceImpl.java
-package com.example.demo.service.Impl;
+package com.example.demo.service;
 
-import com.example.demo.service.AuthService;
-import org.springframework.stereotype.Service;
-
-@Service
-public class AuthServiceImpl implements AuthService {
-
-    @Override
-    public String login(String username, String password) {
-        // Dummy implementation to pass tests
-        return "dummy-token";
-    }
+public interface AuthService {
+    String login(String username, String password);
 }
