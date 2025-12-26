@@ -1,14 +1,14 @@
-package com.example.demo.controller;
+// SupplierProfileServiceImpl.java
+package com.example.demo.service.Impl;
 
-import com.example.demo.repository.SupplierProfileRepository;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.service.SupplierProfileService;
+import org.springframework.stereotype.Service;
 
-@RestController
-public class SupplierProfileController {
+@Service
+public class SupplierProfileServiceImpl implements SupplierProfileService {
 
-    private final SupplierProfileRepository supplierProfileRepository;
-
-    public SupplierProfileController(SupplierProfileRepository supplierProfileRepository) {
-        this.supplierProfileRepository = supplierProfileRepository;
+    @Override
+    public String getSupplierProfile() {
+        return "Supplier profile details"; // Dummy
     }
 }

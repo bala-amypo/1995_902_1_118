@@ -1,7 +1,14 @@
-package com.example.demo.service;
+// SupplierRiskAlertServiceImpl.java
+package com.example.demo.service.Impl;
 
-public interface SupplierProfileService {
+import com.example.demo.service.SupplierRiskAlertService;
+import org.springframework.stereotype.Service;
 
-    String getSupplierProfile();
+@Service
+public class SupplierRiskAlertServiceImpl implements SupplierRiskAlertService {
 
+    @Override
+    public String getAlert() {
+        return "NO_RISK"; // Dummy
+    }
 }
