@@ -1,8 +1,6 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "supplier_profile")
@@ -12,59 +10,38 @@ public class SupplierProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Column(nullable = false, unique = true)
+    @Column(unique = true)
     private String supplierCode;
 
-    @NotBlank
-    @Column(nullable = false)
     private String supplierName;
-
-    @Column(nullable = false)
+    private String email;
     private Boolean active = true;
 
-    @Column(nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
-
-    // ---------- GETTERS & SETTERS ----------
-
-    public Long getId() {
-        return id;
+    // ✅ REQUIRED no-args constructor
+    public SupplierProfile() {
     }
 
-    public String getSupplierCode() {
-        return supplierCode;
-    }
-
-    public String getSupplierName() {
-        return supplierName;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setSupplierCode(String supplierCode) {
+    // ✅ SAFE constructor for tests
+    public SupplierProfile(String supplierCode, String supplierName,
+                           String email, Boolean active) {
         this.supplierCode = supplierCode;
-    }
-
-    public void setSupplierName(String supplierName) {
         this.supplierName = supplierName;
-    }
-
-    public void setActive(Boolean active) {
+        this.email = email;
         this.active = active;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getSupplierCode() { return supplierCode; }
+    public void setSupplierCode(String supplierCode) { this.supplierCode = supplierCode; }
+
+    public String getSupplierName() { return supplierName; }
+    public void setSupplierName(String supplierName) { this.supplierName = supplierName; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    public Boolean getActive() { return active; }
+    public void setActive(Boolean active) { this.active = active; }
 }

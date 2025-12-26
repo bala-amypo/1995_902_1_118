@@ -1,13 +1,12 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.AppUser;
+import com.example.demo.model.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
+
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {
-    // JpaRepository provides:
-    // - save()
-    // - findById()
-    // - findAll()
-    // - deleteById()
-    // - and many more CRUD methods automatically
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
+    Optional<AppUser> findByUsername(String username);
 }
