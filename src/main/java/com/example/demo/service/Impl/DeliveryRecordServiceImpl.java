@@ -1,48 +1,42 @@
-// DeliveryRecordServiceImpl.java
 package com.example.demo.service.impl;
 
-import com.example.demo.entity.DeliveryRecord;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.model.DeliveryRecord;
 import com.example.demo.repository.DeliveryRecordRepository;
+import com.example.demo.repository.PurchaseOrderRecordRepository;
 import com.example.demo.service.DeliveryRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.ArrayList;
 
 @Service
 public class DeliveryRecordServiceImpl implements DeliveryRecordService {
-
+    
     @Autowired
-    private DeliveryRecordRepository deliveryRecordRepository;
+    private DeliveryRecordRepository deliveryRepository;
+    
+    @Autowired
+    private PurchaseOrderRecordRepository poRepository;
 
     @Override
-    public DeliveryRecord save(DeliveryRecord record) {
-        // Return same record to pass test
-        return record;
+    public DeliveryRecord recordDelivery(DeliveryRecord delivery) {
+        if (poRepository.findById(delivery.getPoId()).isEmpty()) {
+            throw new BadRequestException("Invalid PO id: " + delivery.getPoId());
+        }
+        if (delivery.getDeliveredQuantity() < 0) {
+            throw new BadRequestException("Delivered quantity must be >= 0");
+        }
+        return deliveryRepository.save(delivery);
     }
 
     @Override
-    public List<DeliveryRecord> getAll() {
-        // Return dummy list
-        DeliveryRecord dr = new DeliveryRecord();
-        dr.setId(1L);
-        dr.setPoId(1L);
-        dr.setItemName("Steel Rods");
-        dr.setQuantity(100);
-        List<DeliveryRecord> list = new ArrayList<>();
-        list.add(dr);
-        return list;
+    public List<DeliveryRecord> getDeliveriesByPO(Long poId) {
+        return deliveryRepository.findByPoId(poId);
     }
 
     @Override
-    public DeliveryRecord getById(Long id) {
-        // Return dummy record
-        DeliveryRecord dr = new DeliveryRecord();
-        dr.setId(id);
-        dr.setPoId(1L);
-        dr.setItemName("Steel Rods");
-        dr.setQuantity(100);
-        return dr;
+    public List<DeliveryRecord> getAllDeliveries() {
+        return deliveryRepository.findAll();
     }
 }
