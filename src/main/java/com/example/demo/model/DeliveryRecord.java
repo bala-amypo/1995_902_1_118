@@ -1,75 +1,40 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "delivery_records")
+@Table(name = "delivery_record")
 public class DeliveryRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(nullable = false)
     private Long poId;
-
-    @NotBlank
-    @Column(nullable = false)
-    private String itemName;
-
-    @NotNull
-    @Positive
-    @Column(nullable = false)
-    private Integer quantity;
-
-    @Column
+    private Integer deliveredQuantity;
     private LocalDate actualDeliveryDate;
 
-    // ---------- GETTERS & SETTERS ----------
-
-    public Long getId() {
-        return id;
+    // ✅ REQUIRED no-args constructor
+    public DeliveryRecord() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getPoId() {
-        return poId;
-    }
-
-    public void setPoId(Long poId) {
+    // ✅ SAFE constructor for tests
+    public DeliveryRecord(Long poId, Integer deliveredQuantity, LocalDate actualDeliveryDate) {
         this.poId = poId;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public LocalDate getActualDeliveryDate() {
-        return actualDeliveryDate;
-    }
-
-    public void setActualDeliveryDate(LocalDate actualDeliveryDate) {
+        this.deliveredQuantity = deliveredQuantity;
         this.actualDeliveryDate = actualDeliveryDate;
     }
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public Long getPoId() { return poId; }
+    public void setPoId(Long poId) { this.poId = poId; }
+
+    public Integer getDeliveredQuantity() { return deliveredQuantity; }
+    public void setDeliveredQuantity(Integer deliveredQuantity) { this.deliveredQuantity = deliveredQuantity; }
+
+    public LocalDate getActualDeliveryDate() { return actualDeliveryDate; }
+    public void setActualDeliveryDate(LocalDate actualDeliveryDate) { this.actualDeliveryDate = actualDeliveryDate; }
 }
