@@ -1,5 +1,12 @@
+package com.example.demo.controller;
+
+import com.example.demo.service.SupplierProfileService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
-@RequestMapping("/supplier-profile")
+@RequestMapping("/api/supplier")
 public class SupplierProfileController {
 
     private final SupplierProfileService supplierProfileService;
@@ -8,7 +15,7 @@ public class SupplierProfileController {
         this.supplierProfileService = supplierProfileService;
     }
 
-    @GetMapping
+    @GetMapping("/profile")
     public String getProfile() {
         return supplierProfileService.getSupplierProfile();
     }
