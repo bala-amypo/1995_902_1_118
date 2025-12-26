@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.PurchaseOrderRecord;
 import com.example.demo.repository.PurchaseOrderRecordRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,19 +11,24 @@ import java.util.List;
 @RequestMapping("/api/purchase-orders")
 public class PurchaseOrderController {
 
-    private final PurchaseOrderRecordRepository repo;
+    private final PurchaseOrderRecordRepository repository;
 
-    public PurchaseOrderController(PurchaseOrderRecordRepository repo) {
-        this.repo = repo;
+    public PurchaseOrderController(PurchaseOrderRecordRepository repository) {
+        this.repository = repository;
     }
 
+    // CREATE PURCHASE ORDER
     @PostMapping
-    public PurchaseOrderRecord create(@RequestBody PurchaseOrderRecord po) {
-        return repo.save(po);
+    public ResponseEntity<PurchaseOrderRecord> createPurchaseOrder(
+            @RequestBody PurchaseOrderRecord purchaseOrderRecord) {
+
+        PurchaseOrderRecord saved = repository.save(purchaseOrderRecord);
+        return ResponseEntity.ok(saved);
     }
 
+    // GET ALL PURCHASE ORDERS
     @GetMapping
-    public List<PurchaseOrderRecord> all() {
-        return repo.findAll();
+    public ResponseEntity<List<PurchaseOrderRecord>> getAllPurchaseOrders() {
+        return ResponseEntity.ok(repository.findAll());
     }
 }
