@@ -4,9 +4,6 @@ import com.example.demo.model.SupplierRiskAlert;
 import java.util.List;
 
 public interface SupplierRiskAlertService {
-
-@Autowired
-private SupplierRiskAlertRepository supplierRiskAlertRepository;
     
 
     SupplierRiskAlert createAlert(SupplierRiskAlert alert);

@@ -5,14 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "supplier_risk_alert")
 public class SupplierRiskAlert {
-
-    @PrePersist
-public void prePersist() {
-    if (resolved == null) {
-        resolved = false;
-    }
-}
-
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
