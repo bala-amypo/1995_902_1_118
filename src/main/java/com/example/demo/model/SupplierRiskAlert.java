@@ -15,9 +15,7 @@ public class SupplierRiskAlert {
     private String description;
     private Boolean resolved = false;
     private String alertLevel;
-    @Column(nullable = false)
-private boolean resolved = false;
-
+    
 
     // ✅ REQUIRED no-args constructor
     public SupplierRiskAlert() {
