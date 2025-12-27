@@ -5,6 +5,10 @@ import java.util.List;
 
 public interface SupplierRiskAlertService {
 
+@Autowired
+private SupplierRiskAlertRepository supplierRiskAlertRepository;
+    
+
     SupplierRiskAlert createAlert(SupplierRiskAlert alert);
 
     List<SupplierRiskAlert> getAlertsBySupplier(Long supplierId);
